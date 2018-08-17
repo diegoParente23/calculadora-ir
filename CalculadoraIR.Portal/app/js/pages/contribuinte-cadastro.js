@@ -7,7 +7,7 @@ class ContribuinteCadastroView extends ViewBase {
     }
     btnCadastrar(event) {
         var validou = true;
-        var contribuinte = new Contribuinte();
+        var contribuinte = new CadastrarContribuinteInput();
         var txtNome = document.querySelector("#txtNome");
         var txtCpf = document.querySelector("#txtCpf");
         var txtNumDeps = document.querySelector("#txtNumDeps");
@@ -30,13 +30,21 @@ class ContribuinteCadastroView extends ViewBase {
         }
         try {
             if (validou) {
+                contribuinte.Nome = txtNome.value;
+                contribuinte.Cpf = txtCpf.value;
+                contribuinte.RendaBrutaMensal = parseFloat(txtRendaBruta.value);
+                contribuinte.NumeroDeDependentes = parseInt(txtNumDeps.value);
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url: Environment.UrlBaseApi + "/add-contribuinte",
+                    crossDomain: true,
+                    url: Environment.UrlBaseApi + "add-contribuinte",
                     data: contribuinte,
                     success: function (data) {
                         alert("Contribuinte cadastrado com sucesso!");
+                    },
+                    error: function (error) {
+                        alert("Houve uma falha no cadastro do contribuinte");
                     }
                 });
             }
@@ -47,42 +55,40 @@ class ContribuinteCadastroView extends ViewBase {
     }
     template(modelo) {
         return `
-        <form class="form">
-            <div class="container">
-                <div class="field">
-                    <label class="label">Nome:</label>
-                    <div class="control">
-                        <input id="txtNome" class="input" type="text" placeholder="Nome">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">CPF:</label>
-                    <div class="control">
-                        <input id="txtCpf" class="input" type="text" placeholder="CPF">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Núm dependentes:</label>
-                    <div class="control">
-                        <input id="txtNumDeps" class="input" type="text" placeholder="Número de dependentes">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Renda bruta mensal:</label>
-                    <div class="control">
-                        <input id="txtRendaBruta" class="input" type="text" placeholder="Renda bruta mensal">
-                    </div>
-                </div>
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button id="btnCadastrar" class="button is-link">Cadastrar</button>
-                    </div>
+        <div class="container">
+            <div class="field">
+                <label class="label">Nome:</label>
+                <div class="control">
+                    <input id="txtNome" class="input" type="text" placeholder="Nome">
                 </div>
             </div>
-        </form>
+            <div class="field">
+                <label class="label">CPF:</label>
+                <div class="control">
+                    <input id="txtCpf" class="input" type="text" placeholder="CPF">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Núm dependentes:</label>
+                <div class="control">
+                    <input id="txtNumDeps" class="input" type="text" placeholder="Número de dependentes">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Renda bruta mensal:</label>
+                <div class="control">
+                    <input id="txtRendaBruta" class="input" type="text" placeholder="Renda bruta mensal">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button id="btnCadastrar" class="button is-link">Cadastrar</button>
+                </div>
+            </div>
+        </div>
         `;
     }
 }
 var content = new ContribuinteCadastroView("#content-component");
 content.update("");
-document.querySelector(".form").addEventListener('submit', content.btnCadastrar.bind(content));
+document.querySelector("#btnCadastrar").addEventListener('click', content.btnCadastrar.bind(content));

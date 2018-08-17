@@ -6,6 +6,7 @@ using CalculadoraIR.Shared.Command;
 using CalculadoraIR.Shared.ValueObjects;
 using FluentValidator;
 using System;
+using System.Linq;
 
 namespace CalculadoraIR.Domain.Services
 {
@@ -80,6 +81,11 @@ namespace CalculadoraIR.Domain.Services
                     else
                         base.AddNotifications(imposto.Notifications);
                 }
+
+                // Ordena o resultado.
+                result.ContribuintesImpostoDeRenda = 
+                    result.ContribuintesImpostoDeRenda.OrderByDescending(x => x.Imposto)
+                          .ThenByDescending(x => x.Contribuinte.Nome).ToList();
             }
             catch (Exception ex)
             {

@@ -1,6 +1,6 @@
-class Contribuinte {
+class CadastrarContribuinteInput {
     public Nome: string;
-    public Cpf: Cpf;
+    public Cpf: string;
     public NumeroDeDependentes: number
     public RendaBrutaMensal: number;
 }

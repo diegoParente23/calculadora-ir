@@ -1,3 +1,3 @@
 class Cpf {
-    public number: string;
+    public Number: string;
 }

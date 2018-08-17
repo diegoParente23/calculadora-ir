@@ -32,7 +32,9 @@ namespace CalculadoraIR.Domain.Entities
                 Aliquota = Aliquota.Novo(CalcularRendaLiquida(), SalarioMinimo);
 
                 // Adiciona as notificações da aliquota e do contribuinte.
-                base.AddNotifications(Contribuinte.Notifications);
+                if(Contribuinte.Notifications != null)
+                    base.AddNotifications(Contribuinte.Notifications);
+
                 base.AddNotifications(Aliquota.Notifications);
             }
         }

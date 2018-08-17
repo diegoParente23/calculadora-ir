@@ -1,5 +1,4 @@
 class CalculoIRView extends ViewBase<string> {
-    private urlBase: string = "http://localhost:5135/contribuinte/api/v1/";
 
     onLoad() {
         var header = new HeaderView("#header-component");
@@ -10,7 +9,6 @@ class CalculoIRView extends ViewBase<string> {
     }
 
     btnPesquisar() {
-        var contribuinteService = new ContribuinteService();
         var linhas: string = "";
         var validou: boolean = true;
         var inputElement = <HTMLInputElement>document.querySelector("#txtSalarioMinimo");
@@ -25,16 +23,17 @@ class CalculoIRView extends ViewBase<string> {
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: this.urlBase + "calcular-imposto/" + inputElement.value,
+                    crossDomain: true,
+                    url: Environment.UrlBaseApi + "calcular-imposto/" + inputElement.value,
                     success: function (data) {
-                        var contribuintes = (data as ImpostoDeRenda[]);
+                        var resultado = JSON.parse(data);
 
-                        contribuintes.forEach((imposto: ImpostoDeRenda) => {
-                            linhas += `<td>${imposto.contribuinte.nome}</td>`;
-                            linhas += `<td>${imposto.contribuinte.cpf}</td>`;
-                            linhas += `<td>${imposto.contribuinte.nome}</td>`;
-                            linhas += `<td>${imposto.contribuinte.nome}</td>`;
-                            linhas += `<td>${imposto.contribuinte.nome}</td>`;
+                        resultado.ContribuintesImpostoDeRenda.forEach((imposto : ContribuintesImpostoDeRenda) => {
+                            linhas += `<tr><td>${imposto.Contribuinte.Nome}</td>`;
+                            linhas += `<td>${imposto.Contribuinte.Cpf.Number}</td>`;
+                            linhas += `<td>${imposto.Contribuinte.RendaBrutaMensal}</td>`;
+                            linhas += `<td>${imposto.Contribuinte.NumeroDeDependentes}</td>`;
+                            linhas += `<td>${imposto.Imposto}</td></tr>`;
                         });
 
                         var html: string = `
@@ -55,6 +54,9 @@ class CalculoIRView extends ViewBase<string> {
 
                         $("#resultado-component").replaceWith(html);
                     },
+                    error: function(error) {
+                        alert("Houve uma falha no cadastro do contribuinte");
+                    }
                 });
             }
         }

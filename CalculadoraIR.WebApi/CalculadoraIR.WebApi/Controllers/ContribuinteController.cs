@@ -1,9 +1,9 @@
 ﻿using CalculadoraIR.Domain.Services;
 using CalculadoraIR.Domain.Services.Input;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 
 namespace CalculadoraIR.WebApi.Controllers
 {
@@ -19,7 +19,6 @@ namespace CalculadoraIR.WebApi.Controllers
 
         [Route("api/v1/add-contribuinte")]
         [HttpPost]
-        [EnableCors("*", "*", "*")]
         public HttpResponseMessage PostContribuinte([FromBody]CadastrarContribuinteInput cadastroDoContribuinte)
         {
             try
@@ -39,7 +38,6 @@ namespace CalculadoraIR.WebApi.Controllers
 
         [Route("api/v1/calcular-imposto/{salarioMinimo}")]
         [HttpGet]
-        [EnableCors("*", "*", "*")]
         public HttpResponseMessage GetImpostoCalculado(decimal salarioMinimo)
         {
             CalcularIRInput calculo = new CalcularIRInput();
@@ -50,7 +48,7 @@ namespace CalculadoraIR.WebApi.Controllers
                 var resultado = _contribuinteService.Handle(calculo);
 
                 if (_contribuinteService.IsValid())
-                    return Request.CreateResponse(HttpStatusCode.OK, resultado);
+                    return Request.CreateResponse(HttpStatusCode.OK, Newtonsoft.Json.JsonConvert.SerializeObject(resultado));
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest, _contribuinteService.Notifications);
             }
