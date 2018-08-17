@@ -1,0 +1,16 @@
+{
+  "name": "calculadorair.portal",
+  "version": "1.0.0",
+  "description": "Portal responsável por calcular o IR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "tsc -w"
+  },
+  "author": "Diego Parente",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^2.3.2"
+  }
+}

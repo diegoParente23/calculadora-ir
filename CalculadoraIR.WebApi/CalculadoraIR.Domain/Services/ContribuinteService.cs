@@ -72,7 +72,7 @@ namespace CalculadoraIR.Domain.Services
                 foreach(var contribuinte in contribuintes)
                 {
                     // Cria um novo imposto
-                    var imposto = ImpostaDeRenda.Novo(contribuinte, input.SalarioMinimo);
+                    var imposto = ImpostoDeRenda.Novo(contribuinte, input.SalarioMinimo);
 
                     // Verifica se o imposto está válido
                     if (imposto.IsValid())

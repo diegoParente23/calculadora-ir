@@ -7,7 +7,7 @@ namespace CalculadoraIR.Domain.ValueObjects
     {
         public decimal Percentual { get; private set; }
 
-        public ushort QtdeDeSalarios { get; private set; }
+        public decimal QtdeDeSalarios { get; private set; }
 
         private Aliquota(decimal rendaLiquida, decimal salarioMinimo)
         {
@@ -15,18 +15,18 @@ namespace CalculadoraIR.Domain.ValueObjects
 
             if (base.IsValid())
             {
-                QtdeDeSalarios = Convert.ToUInt16(rendaLiquida / salarioMinimo);
+                QtdeDeSalarios = rendaLiquida / salarioMinimo;
 
-                if (QtdeDeSalarios > 2 && QtdeDeSalarios <= 4)
-                    Percentual = 0.075m;
-                else if (QtdeDeSalarios == 5)
-                    Percentual = 0.15m;
-                else if (QtdeDeSalarios > 5 && QtdeDeSalarios <= 7)
-                    Percentual = 0.225m;
-                else if (QtdeDeSalarios > 7)
-                    Percentual = 0.275m;
-                else
+                if (QtdeDeSalarios < 3)
                     Percentual = 0m;
+                else if (QtdeDeSalarios <= 4)
+                    Percentual = 0.075m;
+                else if (QtdeDeSalarios <= 5)
+                    Percentual = 0.15m;
+                else if (QtdeDeSalarios <= 7)
+                    Percentual = 0.225m;
+                else
+                    Percentual = 0.275m;
             }
         }
 

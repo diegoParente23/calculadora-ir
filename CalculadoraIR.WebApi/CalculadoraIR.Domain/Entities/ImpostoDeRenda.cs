@@ -4,7 +4,7 @@ using FluentValidator;
 
 namespace CalculadoraIR.Domain.Entities
 {
-    public sealed class ImpostaDeRenda : Aggregated
+    public sealed class ImpostoDeRenda : Aggregated
     {
         public Contribuinte Contribuinte { get; private set; }
 
@@ -14,14 +14,14 @@ namespace CalculadoraIR.Domain.Entities
 
         public decimal Imposto => Calcular();
 
-        private ImpostaDeRenda(Contribuinte contribuinte, decimal salarioMinimo)
+        private ImpostoDeRenda(Contribuinte contribuinte, decimal salarioMinimo)
         {
             // Armazena os valores
             Contribuinte = contribuinte;
             SalarioMinimo = salarioMinimo;
 
             // Instancia a validação
-            new ValidationContract<ImpostaDeRenda>(this)
+            new ValidationContract<ImpostoDeRenda>(this)
                 .IsGreaterThan(x => x.SalarioMinimo, 1)
                 .IsNotNull(Contribuinte, "O contribuinte não pode ser vazio");
 
@@ -31,13 +31,14 @@ namespace CalculadoraIR.Domain.Entities
                 // Cria a aliquota para o contribuinte
                 Aliquota = Aliquota.Novo(CalcularRendaLiquida(), SalarioMinimo);
 
-                // Adiciona as notificações da aliquota.
+                // Adiciona as notificações da aliquota e do contribuinte.
+                base.AddNotifications(Contribuinte.Notifications);
                 base.AddNotifications(Aliquota.Notifications);
             }
         }
 
-        public static ImpostaDeRenda Novo(Contribuinte contribuinte, decimal salarioMinimo)
-            => new ImpostaDeRenda(contribuinte, salarioMinimo);
+        public static ImpostoDeRenda Novo(Contribuinte contribuinte, decimal salarioMinimo)
+            => new ImpostoDeRenda(contribuinte, salarioMinimo);
 
         private decimal Calcular()
         {

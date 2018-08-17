@@ -3,6 +3,7 @@ using CalculadoraIR.Domain.Services.Input;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CalculadoraIR.WebApi.Controllers
 {
@@ -18,6 +19,7 @@ namespace CalculadoraIR.WebApi.Controllers
 
         [Route("api/v1/add-contribuinte")]
         [HttpPost]
+        [EnableCors("*", "*", "*")]
         public HttpResponseMessage PostContribuinte([FromBody]CadastrarContribuinteInput cadastroDoContribuinte)
         {
             try
@@ -37,6 +39,7 @@ namespace CalculadoraIR.WebApi.Controllers
 
         [Route("api/v1/calcular-imposto/{salarioMinimo}")]
         [HttpGet]
+        [EnableCors("*", "*", "*")]
         public HttpResponseMessage GetImpostoCalculado(decimal salarioMinimo)
         {
             CalcularIRInput calculo = new CalcularIRInput();

@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Contribuinte.cs" />
-    <Compile Include="Entities\ImpostaDeRenda.cs" />
+    <Compile Include="Entities\ImpostoDeRenda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IContribuinteRepository.cs" />
     <Compile Include="Services\ContribuinteService.cs" />

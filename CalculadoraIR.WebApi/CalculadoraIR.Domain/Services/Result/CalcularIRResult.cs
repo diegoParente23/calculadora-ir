@@ -6,6 +6,6 @@ namespace CalculadoraIR.Domain.Services.Result
 {
     public class CalcularIRResult : ICommandResult
     {
-        public List<ImpostaDeRenda> ContribuintesImpostoDeRenda { get; set; } = new List<ImpostaDeRenda>();
+        public List<ImpostoDeRenda> ContribuintesImpostoDeRenda { get; set; } = new List<ImpostoDeRenda>();
     }
 }

@@ -15,7 +15,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 1500M, 2);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, 985m);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, 985m);
 
             Assert.IsTrue(impostaDeRenda.IsValid());
         }
@@ -26,7 +26,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 3940M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.IsTrue(impostaDeRenda.IsValid());
         }
@@ -37,7 +37,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 4925M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.IsTrue(impostaDeRenda.IsValid());
         }
@@ -48,7 +48,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 6895M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.IsTrue(impostaDeRenda.IsValid());
         }
@@ -59,7 +59,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 10000M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.IsTrue(impostaDeRenda.IsValid());
         }
@@ -70,7 +70,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 1500M, 2);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, 985m);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, 985m);
 
             Assert.AreEqual(impostaDeRenda.Aliquota.Percentual, 0M);
         }
@@ -81,7 +81,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 3940M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.AreEqual(impostaDeRenda.Aliquota.Percentual, 0.075M);
         }
@@ -92,7 +92,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 4925M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.AreEqual(impostaDeRenda.Aliquota.Percentual, 0.15M);
         }
@@ -103,7 +103,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 6895M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.AreEqual(impostaDeRenda.Aliquota.Percentual, 0.225M);
         }
@@ -114,7 +114,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09854146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 10000M, 1);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, _salarioMinimo);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, _salarioMinimo);
 
             Assert.AreEqual(impostaDeRenda.Aliquota.Percentual, 0.275M);
         }
@@ -125,7 +125,7 @@ namespace CalculadoraIR.Test
         {
             Cpf cpf = Cpf.Create("09857146006");
             Contribuinte contribuinte = Contribuinte.Novo("Diego Parente", cpf, 0M, 2);
-            ImpostaDeRenda impostaDeRenda = ImpostaDeRenda.Novo(contribuinte, 985m);
+            ImpostoDeRenda impostaDeRenda = ImpostoDeRenda.Novo(contribuinte, 985m);
 
             Assert.IsFalse(impostaDeRenda.IsValid());
         }
