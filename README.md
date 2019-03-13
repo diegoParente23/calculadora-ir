@@ -1,3 +1,5 @@
+[![Build status](https://dev.azure.com/bariodevops/Bario/_apis/build/status/Ambev.Bario.API.Docker.Build)]
+
 # calculadora-ir
 
 Importante
