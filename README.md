@@ -1,5 +1,7 @@
 ![Build status](https://dev.azure.com/bariodevops/Bario/_apis/build/status/Ambev.Bario.API.Docker.Build?branchName=master)
 
+https://vsrm.dev.azure.com/bariodevops/_apis/public/Release/badge/99dd1a8d-9af4-4e07-a32d-33288937f215/7/9
+
 # calculadora-ir
 
 Importante
