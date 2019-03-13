@@ -1,4 +1,4 @@
-[![Build status](https://dev.azure.com/bariodevops/Bario/_apis/build/status/Ambev.Bario.API.Docker.Build?branchName=master)]
+[![Build status](https://dev.azure.com/bariodevops/Bario/_apis/build/status/Ambev.Bario.API.Docker.Build?branchName=master)](https://dev.azure.com/bariodevops/Bario/_build/latest?definitionId=20)
 
 # calculadora-ir
 
